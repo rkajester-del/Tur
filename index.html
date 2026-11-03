@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристическая фирма «Открой Казахстан»</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 5%;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, #e0f7fa, #ffffff);
+            color: #0083b0;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: #555;
+            animation: fadeInUp 1s ease-out 0.5s backwards;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: #ff9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: pulse 2s infinite;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 152, 0, 0.4);
+        }
+
+        .tours-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .tours-section h2 {
+            font-size: 2.5rem;
+            color: #0083b0;
+            margin-bottom: 50px;
+        }
+
+        .tours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .tour-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .tour-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .tour-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .tour-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .tour-card h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .tour-price {
+            color: #ff9800;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+
+        .tour-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0083b0;
+            color: white;
+            margin-top: 50px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal:target {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            text-align: center;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal:target .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+            text-decoration: none;
+            line-height: 1;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ff9800;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: #0083b0;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .modal-gallery {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-gallery img {
+            width: calc(33.333% - 10px);
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 152, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 152, 0, 0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .modal-gallery img { width: 100%; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">Открой Казахстан</div>
+    </header>
+
+    <section class="hero">
+        <h1>Не мечтай о путешествиях — открой свою страну!</h1>
+        <p>Яркие впечатления и незабываемые эмоции ждут тебя.</p>
+        <a href="#tours" class="btn">Выбрать тур</a>
+    </section>
+
+    <section id="tours" class="tours-section">
+        <h2>Наши туристические маршруты</h2>
+        <div class="tours-grid">
+            
+            <a href="#tour-1" class="tour-card">
+                <img src="1.jpeg" alt="Чудеса природы">
+                <div class="card-info">
+                    <h3>Чудеса природы</h3>
+                    <div class="tour-price">4 дня | от 65 000 ₸</div>
+                    <p class="tour-desc">Погрузитесь в мир первозданной красоты. Величественные горы, кристально чистые озера и бескрайние степи подарят ощущение полного единения с природой. Идеальный маршрут для тех, кто хочет перезагрузиться и наполниться энергией земли.</p>
+                </div>
+            </a>
+
+            <a href="#tour-2" class="tour-card">
+                <img src="2.jpeg" alt="По следам истории">
+                <div class="card-info">
+                    <h3>По следам истории</h3>
+                    <div class="tour-price">3 дня | от 58 000 ₸</div>
+                    <p class="tour-desc">Прикоснитесь к вечности через древние стены и загадочные руины. Этот путь проведет вас сквозь века, раскрывая тайны великих цивилизаций. Каждое место здесь дышит легендами и хранит память о героях прошлого.</p>
+                </div>
+            </a>
+
+            <a href="#tour-3" class="tour-card">
+                <img src="3.jpeg" alt="Семейный отдых">
+                <div class="card-info">
+                    <h3>Семейный отдых</h3>
+                    <div class="tour-price">3 дня | от 49 000 ₸</div>
+                    <p class="tour-desc">Создавайте теплые воспоминания вместе! Программа разработана так, чтобы каждый член семьи нашел занятие по душе. Комфорт, безопасность и море радости гарантируют, что этот отпуск станет одним из самых счастливых в вашей жизни.</p>
+                </div>
+            </a>
+
+            <a href="#tour-4" class="tour-card">
+                <img src="4.jpeg" alt="Экстрим Казахстан">
+                <div class="card-info">
+                    <h3>Экстрим Казахстан</h3>
+                    <div class="tour-price">4 дня | от 89 000 ₸</div>
+                    <p class="tour-desc">Для тех, кто не боится вызовов! Адреналин зашкаливает на каждом километре пути. Покорение вершин, скоростные спуски и испытания на прочность превратят эту поездку в настоящую битву со стихией, которую вы точно выиграете.</p>
+                </div>
+            </a>
+
+            <a href="#tour-5" class="tour-card">
+                <img src="5.jpeg" alt="Путешествие выходного дня">
+                <div class="card-info">
+                    <h3>Путешествие выходного дня</h3>
+                    <div class="tour-price">1 день | от 25 000 ₸</div>
+                    <p class="tour-desc">Маленькое приключение за короткое время. Успейте увидеть самое главное, сделать сотни фото и вернуться домой с ощущением праздника. Отличный способ разбавить будни яркими красками без долгой подготовки.</p>
+                </div>
+            </a>
+
+            <a href="#tour-6" class="tour-card">
+                <img src="6.jpeg" alt="Здоровье и отдых">
+                <div class="card-info">
+                    <h3>Здоровье и отдых</h3>
+                    <div class="tour-price">5 дней | от 78 000 ₸</div>
+                    <p class="tour-desc">Посвятите это время восстановлению сил. Целебный воздух, спа-процедуры и полная гармония помогут забыть о городской суете. Вы вернетесь не просто отдохнувшим, а обновленным и готовым к новым свершениям.</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Туристическая фирма «Открой Казахстан»</p>
+    </footer>
+
+    <div id="tour-1" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">Чудеса природы</h2>
+            <p class="modal-description">Погрузитесь в мир первозданной красоты. Этот тур подарит вам возможность увидеть самые живописные уголки нашей страны, подышать чистым горным воздухом и сделать невероятные фотографии на фоне величественных пейзажей. Идеально подходит для любителей природы и спокойствия.</p>
+            <div class="modal-gallery">
+                <img src="1/1.jpeg" alt="">
+                <img src="1/2.jpeg" alt="">
+                <img src="1/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tour-2" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">По следам истории</h2>
+            <p class="modal-description">Отправьтесь в увлекательное путешествие во времени. Вы посетите древние города, увидите архитектурные шедевры прошлого и узнаете много интересных фактов о культуре и традициях народа. Этот тур расширит ваш кругозор и оставит глубокие впечатления.</p>
+            <div class="modal-gallery">
+                <img src="2/1.jpeg" alt="">
+                <img src="2/2.jpeg" alt="">
+                <img src="2/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tour-3" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">Семейный отдых</h2>
+            <p class="modal-description">Лучший выбор для тех, кто хочет провести время всей семьей. Программа тура составлена так, чтобы было интересно и детям, и взрослым. Вас ждут комфортное проживание, веселые активности и множество моментов, которые сплотят вашу семью еще больше.</p>
+            <div class="modal-gallery">
+                <img src="3/1.jpeg" alt="">
+                <img src="3/2.jpeg" alt="">
+                <img src="3/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tour-4" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">Экстрим Казахстан</h2>
+            <p class="modal-description">Для самых смелых и активных! Адреналин, скорость и яркие эмоции гарантированы. Испытайте себя на прочность, покорите новые вершины и получите заряд энергии, которого хватит надолго. Это приключение, которое вы запомните на всю жизнь.</p>
+            <div class="modal-gallery">
+                <img src="4/1.jpeg" alt="">
+                <img src="4/2.jpeg" alt="">
+                <img src="4/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tour-5" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">Путешествие выходного дня</h2>
+            <p class="modal-description">Не нужно ждать отпуска, чтобы отдохнуть. За один день вы сможете перезагрузиться, сменить обстановку и получить массу положительных эмоций. Отличный вариант для тех, кто ценит свое время и хочет максимально эффективно провести выходные.</p>
+            <div class="modal-gallery">
+                <img src="5/1.jpeg" alt="">
+                <img src="5/2.jpeg" alt="">
+                <img src="5/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="tour-6" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <h2 class="modal-title">Здоровье и отдых</h2>
+            <p class="modal-description">Посвятите это время себе. Тур направлен на восстановление сил и укрепление здоровья. Вас ждут оздоровительные процедуры, расслабляющая атмосфера и забота о вашем самочувствии. Вернитесь из поездки бодрыми и полными сил.</p>
+            <div class="modal-gallery">
+                <img src="6/1.jpeg" alt="">
+                <img src="6/2.jpeg" alt="">
+                <img src="6/3.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
