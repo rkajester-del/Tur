@@ -36,6 +36,48 @@
             letter-spacing: 2px;
         }
 
+        .leaders-section {
+            background: white;
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 4px solid #ff9800;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .leaders-title {
+            font-size: 2rem;
+            color: #0083b0;
+            margin-bottom: 40px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .leaders-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .leader-card {
+            max-width: 300px;
+        }
+
+        .leader-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #00b4db;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,180,219,0.3);
+            transition: transform 0.3s;
+        }
+
+        .leader-card:hover .leader-photo {
+            transform: scale(1.05);
+        }
+
         .hero {
             text-align: center;
             padding: 120px 20px;
@@ -259,6 +301,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .modal-gallery img { width: 100%; height: auto; }
+            .leaders-grid { gap: 30px; }
         }
     </style>
 </head>
@@ -267,6 +310,18 @@
     <header class="main-header">
         <div class="logo">Открой Казахстан</div>
     </header>
+
+    <section class="leaders-section">
+        <h2 class="leaders-title">Руководители проекта</h2>
+        <div class="leaders-grid">
+            <div class="leader-card">
+                <img src="leader1.jpg" alt="Руководитель 1" class="leader-photo">
+            </div>
+            <div class="leader-card">
+                <img src="leader2.jpg" alt="Руководитель 2" class="leader-photo">
+            </div>
+        </div>
+    </section>
 
     <section class="hero">
         <h1>Не мечтай о путешествиях — открой свою страну!</h1>
@@ -388,7 +443,7 @@
             <p class="modal-description">
                 <strong>Маршрут:</strong> Астана → Бурабай → Окжетпес → Голубой залив → Астана<br><br>
                 <strong>День 1 · Бурабай:</strong> 07:00 выезд из Астаны, 10:30 прибытие в Бурабай, прогулка у озера, игры, гостевой дом/санаторий.<br>
-                <strong>День 2 · Окжетпес:</strong> Смотровая у Окжетпес, легенды Жумбактаса, легкий подъем Болектау, свободное время.<br>
+                <strong>День 2 · Окжетпес:</strong> Смотровая у Окжетпес, легенда о Жумбактасе, легкий подъем Болектау, свободное время.<br>
                 <strong>День 3 · Голубой залив:</strong> Катание на лодке, обед, 15:00 возвращение в Астану.<br><br>
                 <strong>Что включено:</strong> Транспорт из Астаны, 2 ночи, питание, гид, входные билеты/лодки по программе.<br>
                 <strong>Совет туристу:</strong> Детям на воде — жилет. На смотровых держитесь поручней. После дороги дайте детям час у воды — так легче войти в ритм отдыха.
@@ -463,4 +518,4 @@
     </div>
 
 </body>
-                                                                   </html>
+</html>
