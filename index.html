@@ -59,9 +59,7 @@
             flex-wrap: wrap;
         }
 
-        .leader-card {
-            max-width: 300px;
-        }
+        .leader-card { max-width: 300px; }
 
         .leader-photo {
             width: 200px;
@@ -74,9 +72,7 @@
             transition: transform 0.3s;
         }
 
-        .leader-card:hover .leader-photo {
-            transform: scale(1.05);
-        }
+        .leader-card:hover .leader-photo { transform: scale(1.05); }
 
         .hero {
             text-align: center;
@@ -162,14 +158,9 @@
             transition: transform 0.5s;
         }
 
-        .tour-card:hover img {
-            transform: scale(1.1);
-        }
+        .tour-card:hover img { transform: scale(1.1); }
 
-        .card-info {
-            padding: 20px;
-            text-align: left;
-        }
+        .card-info { padding: 20px; text-align: left; }
 
         .tour-card h3 {
             font-size: 1.5rem;
@@ -190,12 +181,31 @@
             color: #666;
         }
 
+        /* Секция видео */
+        .video-section {
+            padding: 60px 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
             background: #0083b0;
             color: white;
-            margin-top: 50px;
         }
 
         .modal {
@@ -214,10 +224,7 @@
             transition: opacity 0.3s;
         }
 
-        .modal:target {
-            display: flex;
-            opacity: 1;
-        }
+        .modal:target { display: flex; opacity: 1; }
 
         .modal-content {
             background: white;
@@ -233,9 +240,7 @@
             overflow-y: auto;
         }
 
-        .modal:target .modal-content {
-            transform: scale(1);
-        }
+        .modal:target .modal-content { transform: scale(1); }
 
         .close-btn {
             position: absolute;
@@ -249,9 +254,7 @@
             transition: color 0.3s;
         }
 
-        .close-btn:hover {
-            color: #ff9800;
-        }
+        .close-btn:hover { color: #ff9800; }
 
         .modal-title {
             font-size: 2rem;
@@ -390,6 +393,15 @@
         </div>
     </section>
 
+    <section class="video-section">
+        <div class="video-container">
+            <video controls autoplay muted loop playsinline>
+                <source src="tur.mp4" type="video/mp4">
+                Ваш браузер не поддерживает воспроизведение видео.
+            </video>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2026 Туристическая фирма «Открой Казахстан»</p>
     </footer>
@@ -507,15 +519,4 @@
                 <strong>Дни 2-3 · Оздоровление:</strong> Утренние купания, солнечные ванны, вечерние прогулки.<br>
                 <strong>Дни 4-5 · Восстановление:</strong> Свободный пляж, легкая экскурсия, выезд домой.<br><br>
                 <strong>Что включено:</strong> Транспорт, 4 ночи на базе, питание, оздоровительная программа, гид и трансфер.<br>
-                <strong>Совет туристу:</strong> В первые дни купайтесь по 10-15 минут — воде нужно привыкнуть. Пейте обычную воду после купания. Не загорайте в полдень. Соблюдайте режим базы.
-            </p>
-            <div class="modal-gallery">
-                <img src="22.jpg" alt="">
-                <img src="23.jpg" alt="">
-                <img src="24.jpg" alt="">
-            </div>
-        </div>
-    </div>
-
-</body>
-</html>
+                <strong>Совет туристу:</strong> В первые дни купайтесь по 10-15 минут — воде нужно привыкнуть. Пе
